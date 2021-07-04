@@ -14,13 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('login'));
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('myfriends', [App\Http\Controllers\UserController::class, 'getMyFriendList'])->name('users.myfriends');
+Route::post('addfriends', [App\Http\Controllers\UserController::class, 'addFriend'])->name('users.addfriends');
+Route::resource('users', App\Http\Controllers\UserController::class);

@@ -1,61 +1,69 @@
 <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
 
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
-<style type="text/css">
-   @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-#team {
-    background: #eee !important;
-}
 
-.btn-primary:hover,
-.btn-primary:focus {
+<style type="text/css">
+    /* FontAwesome for working BootSnippet :> */
+    .card-body {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 1.25rem;
+        width: 328px;
+    }
+    #team {
+    background: #eee !important;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
     background-color: #108d6f;
     border-color: #108d6f;
     box-shadow: none;
     outline: none;
-}
+    }
 
-.btn-primary {
+    .btn-primary {
     color: #fff;
     background-color: #007b5e;
     border-color: #007b5e;
-}
+    }
 
-section {
+    section {
     padding: 60px 0;
-}
+    }
 
-section .section-title {
+    section .section-title {
     text-align: center;
     color: #007b5e;
     margin-bottom: 50px;
     text-transform: uppercase;
-}
+    }
 
-#team .card {
+    #team .card {
     border: none;
     background: #ffffff;
-}
+    }
 
-.image-flip:hover .backside,
-.image-flip.hover .backside {
+    .image-flip:hover .backside,
+    .image-flip.hover .backside {
     -webkit-transform: rotateY(0deg);
     -moz-transform: rotateY(0deg);
     -o-transform: rotateY(0deg);
     -ms-transform: rotateY(0deg);
     transform: rotateY(0deg);
     border-radius: .25rem;
-}
+    }
 
-.image-flip:hover .frontside,
-.image-flip.hover .frontside {
+    .image-flip:hover .frontside,
+    .image-flip.hover .frontside {
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
-}
+    }
 
-.mainflip {
+    .mainflip {
     -webkit-transition: 1s;
     -webkit-transform-style: preserve-3d;
     -ms-transition: 1s;
@@ -66,17 +74,17 @@ section .section-title {
     transition: 1s;
     transform-style: preserve-3d;
     position: relative;
-}
+    }
 
-.frontside {
+    .frontside {
     position: relative;
     -webkit-transform: rotateY(0deg);
     -ms-transform: rotateY(0deg);
     z-index: 2;
     margin-bottom: 30px;
-}
+    }
 
-.backside {
+    .backside {
     position: absolute;
     top: 0;
     left: 0;
@@ -89,10 +97,10 @@ section .section-title {
     -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
     -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
     box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-}
+    }
 
-.frontside,
-.backside {
+    .frontside,
+    .backside {
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     -ms-backface-visibility: hidden;
@@ -107,26 +115,48 @@ section .section-title {
     -ms-transform-style: preserve-3d;
     transition: 1s;
     transform-style: preserve-3d;
-}
+    }
 
-.frontside .card,
-.backside .card {
+    .frontside .card,
+    .backside .card {
     min-height: 312px;
-}
+    }
 
-.backside .card a {
+    .backside .card a {
     font-size: 18px;
     color: #007b5e !important;
-}
+    }
 
-.frontside .card .card-title,
-.backside .card .card-title {
+    .frontside .card .card-title,
+    .backside .card .card-title {
     color: #007b5e !important;
-}
+    }
 
-.frontside .card .card-body img {
+    .frontside .card .card-body img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
+    }
+    
+    .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    color: #fff;
+    -moz-osx-font-smoothing: grayscale;
+}
+.rounded-circle {
+    border-radius: 65%!important;
+    width: 10pc;
+}
+
+.loginCard {
+    margin-top: 25px;
+}
+img.nav.rounded-circle {
+    width: 2pc;
 }
 </style>
+@stack('styles')
