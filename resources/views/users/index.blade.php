@@ -49,15 +49,12 @@
                                                     <div class = "btn btn-primary btn-sm changeStatus" data-friendId = {{$user->id}} data-userId = {{auth()->user()->id}} data-status = 0 ><i class="fa fa-plus"> Add Friend </i></div>
                                                 @else
 
-                                                    @if(@$user->followers->first()->pivot->status == 1 || @$user->followers->first()->pivot->status == 1)
-                                                        <div class = "btn btn-primary btn-sm changeStatus" data-friendId = {{$user->id}} data-userId = {{auth()->user()->id}} data-status = 0 ><i class="fa fa-times"> Declined</i></div>
+                                                    @if(@$user->followers->first()->pivot->status == 1 || @$user->followings->first()->pivot->status == 1)
                                                         <a href="{{route('users.myfriends', ['id' => $user->id])}}"> 
                                                             <div class = "btn btn-primary btn-sm changeStatus"><i class="fa fa-eye"> View Friends </i>  </div>
                                                         </a>
                                                         @else
                                                         <div class = "btn btn-primary btn-sm changeStatus" data-friendId = {{$user->id}} data-userId = {{auth()->user()->id}} data-status = 3 ><i class="fa fa-clock-o"> Pending</i></div>
-                                                        <div class = "btn btn-primary btn-sm changeStatus" data-friendId = {{$user->id}} data-userId = {{auth()->user()->id}} data-status = 0 ><i class="fa fa-times"> Declined</i></div>
-
                                                     @endif
                                                 @endif
                                                 <div class = "btn btn-primary btn-sm changeStatus" data-friendId = {{$user->id}} data-userId = {{auth()->user()->id}} data-status = 3 ><i class="fa fa-trash"> Delete</i></div>
