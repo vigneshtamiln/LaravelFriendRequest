@@ -66,4 +66,20 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'user_friends', 'user_id', 'friend_id')->withPivot('status')->withTimestamps();
     }
 
+    public function getfollowerStatusAttribute()
+    {
+        $follower = $this->followers
+        ->where('id', auth()->user()->id)
+        ->first();
+        return !is_null($follower) ? $follower->pivot->status : 8;
+    }
+
+    public function getfollowingStatusAttribute()
+    {
+        $following = $this->followings
+        ->where('id', auth()->user()->id)
+        ->first();
+        return !is_null($following) ? $following->pivot->status : 8;
+    }
+    
 }

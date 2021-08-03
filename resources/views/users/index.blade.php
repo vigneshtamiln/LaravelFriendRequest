@@ -27,35 +27,19 @@
                                                 <h5 class="card-title">{{$user->email}}</h5>
                                                 <h5 class="card-title">{{$user->gender ? $user::$genders[$user->gender] : ''}}</h5>
                                                 <hr>
-                                                @php
-                                                    $btnTxt = "Add Friend";
-                                                    $btnText = "Declined"
-                                                @endphp
-                                                @if ($user->followers->count() > 0)
-                                                    @php
-                                                        $status =  @$user->followers->first()->pivot->status;
-                                                        $btnTxt = $status == 0 ? 'Pending' : ($status == 1 ? 'Approved' :'Add Friend');
-                                                    @endphp
-
-                                                @endif
-                                                @if ($user->followings->count() > 0)
-                                                    @php
-                                                        $status =$user->followings->first()->pivot->status;
-                                                        $btnText = $status == 0 ? 'Approve' : 'Declined';
-                                                    @endphp
-                                                    <div class = "btn btn-primary btn-sm changeStatus" data-userId = {{$user->id}} data-friendId = {{auth()->user()->id}} data-status = 1 > {{$btnText}} </div>
-                                                @endif
-                                                @if($user->followers->count() <= 0 && $user->followings->count() <= 0 && @$user->followers->first()->pivot->status == 0 && @$user->followers->first()->pivot->status == 0)
+                                                @if ($user->follower_status == 8 && $user->following_status != 0  && $user->following_status != 1)
                                                     <div class = "btn btn-primary btn-sm changeStatus" data-friendId = {{$user->id}} data-userId = {{auth()->user()->id}} data-status = 0 ><i class="fa fa-plus"> Add Friend </i></div>
-                                                @else
-
-                                                    @if(@$user->followers->first()->pivot->status == 1 || @$user->followings->first()->pivot->status == 1)
-                                                        <a href="{{route('users.myfriends', ['id' => $user->id])}}"> 
-                                                            <div class = "btn btn-primary btn-sm changeStatus"><i class="fa fa-eye"> View Friends </i>  </div>
-                                                        </a>
-                                                        @else
-                                                        <div class = "btn btn-primary btn-sm changeStatus" data-friendId = {{$user->id}} data-userId = {{auth()->user()->id}} data-status = 3 ><i class="fa fa-clock-o"> Pending</i></div>
-                                                    @endif
+                                                @endif
+                                                @if ($user->follower_status == 0 && $user->following_status != 1)
+                                                    <div class = "btn btn-primary btn-sm changeStatus" data-friendId = {{$user->id}} data-userId = {{auth()->user()->id}} data-status = 3 ><i class="fa fa-clock-o"> Pending</i></div>
+                                                @endif
+                                                @if ($user->following_status == 0 && $user->following_status != 1)
+                                                    <div class = "btn btn-primary btn-sm changeStatus" data-userId = {{$user->id}} data-friendId = {{auth()->user()->id}} data-status = 1 ><i class="fa fa-clock-o"> Approve</i></div>
+                                                @endif
+                                                @if ($user->follower_status == 1 || $user->following_status == 1)
+                                                    <a href="{{route('users.myfriends', ['id' => $user->id])}}"> 
+                                                        <div class = "btn btn-primary btn-sm changeStatus"><i class="fa fa-eye"> View Friends </i>  </div>
+                                                    </a>
                                                 @endif
                                                 <div class = "btn btn-primary btn-sm changeStatus" data-friendId = {{$user->id}} data-userId = {{auth()->user()->id}} data-status = 3 ><i class="fa fa-trash"> Delete</i></div>
                                             </div>
